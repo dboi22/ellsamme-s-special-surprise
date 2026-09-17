@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { Camera, ChevronLeft, Heart, Mail, Music2, Sparkles } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 
 import annoyedPuppy from "@/assets/puppy-annoyed.png";
 import happyPuppy from "@/assets/puppy-hearts.png";
@@ -14,7 +14,6 @@ import { getBirthdayAccess, unlockBirthday } from "@/lib/birthday-gate.functions
 type Scene = "question" | "no" | "good" | "camera" | "memories" | "letter" | "music";
 
 export const Route = createFileRoute("/")({
-  loader: () => getBirthdayAccess(),
   head: () => ({
     meta: [
       { title: "For Ellsamme — A Birthday Surprise" },
@@ -29,11 +28,20 @@ export const Route = createFileRoute("/")({
 });
 
 function BirthdayPage() {
-  const { unlocked: initiallyUnlocked } = Route.useLoaderData();
-  const [unlocked, setUnlocked] = useState(initiallyUnlocked);
+  const checkAccess = useServerFn(getBirthdayAccess);
+  const [unlocked, setUnlocked] = useState(false);
   const [scene, setScene] = useState<Scene>("question");
 
+  useEffect(() => {
+    let active = true;
+    checkAccess()
+      .then((result) => { if (active && result?.unlocked) setUnlocked(true); })
+      .catch(() => {});
+    return () => { active = false; };
+  }, [checkAccess]);
+
   if (!unlocked) return <PasscodeScreen onUnlock={() => setUnlocked(true)} />;
+
 
   return (
     <main className="birthday-shell">
