@@ -10,6 +10,12 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        birthday:
+          "rounded-full border-2 border-primary bg-primary px-7 font-display text-base text-primary-foreground shadow-sticker hover:-translate-y-1 hover:bg-primary/90 active:translate-y-0",
+        sweet:
+          "rounded-full border-2 border-primary/20 bg-secondary px-7 font-display text-base text-secondary-foreground shadow-sm hover:-translate-y-1 hover:bg-accent",
+        keepsake:
+          "h-auto flex-col rounded-2xl border-2 border-primary/20 bg-card p-4 font-display text-card-foreground shadow-sticker hover:-translate-y-1 hover:border-primary/50 hover:bg-accent",
         destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
         outline:
           "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
