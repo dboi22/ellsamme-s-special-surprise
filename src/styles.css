@@ -143,14 +143,22 @@ button, input { font: inherit; }
 .rainbow-title span:nth-child(4n+2) { color: oklch(0.67 0.16 350); }
 .rainbow-title span:nth-child(4n+3) { color: oklch(0.72 0.14 82); }
 .rainbow-title span:nth-child(4n) { color: oklch(0.53 0.14 305); }
-.camera-body { position: relative; width: min(86vw, 26rem); aspect-ratio: 1.55; margin: .4rem auto 1rem; border: 4px solid var(--primary); border-radius: 1.4rem; background: var(--petal); box-shadow: 8px 10px 0 color-mix(in oklab, var(--primary) 20%, transparent); animation: camera-up .75s .15s cubic-bezier(.17,.89,.32,1.28) both; }
+.camera-body { position: relative; display: grid; place-items: center; width: min(78vw, 22rem); aspect-ratio: 1.22; margin: .4rem auto 1rem; padding: 2.6rem 1.4rem 1.4rem; border: 4px solid var(--primary); border-radius: 1.2rem; background: linear-gradient(180deg, var(--paper), var(--petal)); box-shadow: 8px 10px 0 color-mix(in oklab, var(--primary) 20%, transparent); animation: camera-up .75s .15s cubic-bezier(.17,.89,.32,1.28) both; }
 .camera-body::before { content: ""; position: absolute; left: 1.8rem; top: -1.15rem; width: 5rem; height: 1.3rem; border: 3px solid var(--primary); border-radius: .5rem .5rem 0 0; background: var(--accent); }
-.camera-lens { position: absolute; left: 50%; top: 50%; width: 48%; aspect-ratio: 1; overflow: hidden; transform: translate(-50%, -45%); border: 8px solid var(--paper); outline: 4px solid var(--primary); border-radius: 50%; background: var(--paper); }
+.camera-lens { width: 100%; aspect-ratio: 1/1.05; overflow: hidden; border: 6px solid var(--paper); outline: 4px solid var(--primary); border-radius: .5rem; background: var(--paper); }
 .camera-lens img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 28%; }
-.camera-flash { position: absolute; right: 1.4rem; top: 1.2rem; width: 3rem; height: 1.7rem; border: 3px solid var(--primary); border-radius: .3rem; background: var(--sunshine); }
-.camera-dot { position: absolute; left: 1.4rem; top: 1.4rem; width: 1.3rem; aspect-ratio: 1; border: 3px solid var(--primary); border-radius: 50%; background: var(--burgundy); }
+.camera-flash { position: absolute; right: 1.1rem; top: .9rem; width: 2.6rem; height: 1.4rem; border: 3px solid var(--primary); border-radius: .3rem; background: var(--sunshine); }
+.camera-dot { position: absolute; left: 1.1rem; top: 1rem; width: 1.2rem; aspect-ratio: 1; border: 3px solid var(--primary); border-radius: 50%; background: var(--burgundy); }
+.party-pup { position: absolute; left: -2.6rem; bottom: -1.2rem; width: 7rem; height: auto; }
+.item-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; max-width: 40rem; margin: 1.5rem auto .5rem; }
+.item-pick { display: grid; justify-items: center; gap: .5rem; padding: .9rem .5rem; border: 3px solid var(--primary); border-radius: 1.1rem; background: var(--card); box-shadow: 6px 7px 0 color-mix(in oklab, var(--primary) 18%, transparent); cursor: pointer; transition: transform .18s ease, box-shadow .18s ease; }
+.item-pick:nth-child(even) { transform: rotate(2deg); }
+.item-pick:hover { transform: translateY(-6px) rotate(-2deg); box-shadow: 8px 10px 0 color-mix(in oklab, var(--primary) 26%, transparent); }
+.item-pick img { width: min(22vw, 7.5rem); height: auto; }
+.item-pick span { font: 1.15rem var(--font-display); color: var(--primary); }
 .keepsake-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .65rem; max-width: 30rem; margin: 0 auto; }
 .keepsake-row button svg { width: 1.65rem; height: 1.65rem; }
+
 
 .google-title { font-size: clamp(3.5rem, 10vw, 6rem) !important; }
 .google-title span:nth-child(1) { color: oklch(0.55 0.19 18); }
